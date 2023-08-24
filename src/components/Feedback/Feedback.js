@@ -16,7 +16,7 @@ class Feedback extends React.Component {
   };
 
   render() {
-    const { good, neutral, bad, feedbackReceived } = this.state;
+    const { good, neutral, bad } = this.state;
     const total = good + neutral + bad;
     const positivePercentage = total === 0 ? 0 : Math.round((good / total) * 100);
   
@@ -27,7 +27,7 @@ class Feedback extends React.Component {
           options={['good', 'neutral', 'bad']}
           onLeaveFeedback={this.handleClick}
         />
-        {feedbackReceived ? (
+        {total > 0 ? (
           <div>
             <h3>Statistics</h3>
             <Statistics
